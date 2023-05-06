@@ -61,6 +61,12 @@ button {
 }
 
 .header {
+  /* position: fixed; */
+  top: 0;
+  width: 100%;
+  z-index: 10;
+
+  background-color: var(--cloud);
   border-bottom: 1px solid #e7e9fc;
   box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08);
 }
@@ -87,6 +93,10 @@ button {
   gap: 40px;
 }
 
+.nav-item {
+  position: relative;
+}
+
 .address-item {
   display: block;
   font-style: normal;
@@ -96,7 +106,7 @@ button {
   padding: 24px 0;
 }
 
-.nav-item {
+.nav-item-link {
   display: block;
   font-weight: 500;
   font-size: 16px;
@@ -105,11 +115,28 @@ button {
   padding: 24px 0;
 }
 
-.nav-item:focus,
-.nav-item:hover,
+.nav-item-link:focus,
+.nav-item-link:hover,
 .address-item:focus,
-.address-item:hover {
+.address-item:hover,
+.nav-item-link.active {
   color: var(--pressed-state);
+}
+
+.nav-item-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: block;
+
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+}
+
+.nav-item-link.active::after {
+  background-color: var(--pressed-state);
 }
 
 .logotype {
@@ -240,6 +267,8 @@ button {
 }
 
 .hero {
+  margin-top: 74px;
+
   background-color: var(--dark-grey);
   padding: 188px 0;
   background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url(../images/people-office.jpg);
@@ -438,4 +467,50 @@ button {
   padding: 32px 16px;
   border: 1px solid #e7e9fc;
   border-top: none;
+}
+
+.text-wrapper {
+}
+
+.backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  width: 100%;
+  height: 100%;
+  background: rgba(46, 47, 66, 0.4);
+}
+
+.modal {
+  position: absolute;
+  top: calc(50% - 292px);
+  left: calc(50% - 204px);
+
+  width: 408px;
+  height: 584px;
+  background: #fcfcfc;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+}
+
+.modal-close-icon {
+  fill: var(--dark-grey);
 }
