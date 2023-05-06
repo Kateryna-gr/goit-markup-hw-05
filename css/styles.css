@@ -132,7 +132,7 @@ button {
 .nav-item-link::after {
   content: "";
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
   display: block;
 
@@ -259,13 +259,12 @@ button {
   margin: 0 auto;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 
-  transition: background-color var(--animation), transform var(--animation);
+  transition: background-color var(--animation);
 }
 
 .order:focus,
 .order:hover {
   background-color: var(--pressed-state);
-  transform: scale(1.08);
 }
 
 .filter {
@@ -518,9 +517,7 @@ button {
   height: 100%;
   transform: translateY(100%);
 
-  color: var(--cloud);
   background-color: var(--primary-brand);
-  padding: 32px 40px;
 
   transition: transform var(--animation);
 }
@@ -531,6 +528,14 @@ button {
 }
 
 .overlay-text {
+  position: absolute;
+  top: 0;
+  padding: 32px 40px;
+
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--cloud);
 }
 
 .backdrop {
@@ -558,11 +563,10 @@ button {
   position: absolute;
   top: calc(50% - 292px);
   left: calc(50% - 204px);
-  /* transform: translate(-50%, -50%); */
-  transform: scale(1);
+  transform: translate(-50%, -50%);
 
   width: 408px;
-  height: 584px;
+  min-height: 584px;
   background: #fcfcfc;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
@@ -573,9 +577,7 @@ button {
 
 .backdrop.is-hidden .modal {
   opacity: 0;
-  /* transform: translate(-50%, -50%); */
-  transform: scale(0.5);
-  transition-delay: 0ms;
+  transform: translate(-50%, -50%);
 }
 
 .modal-close {
@@ -591,9 +593,17 @@ button {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  border: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #e7e9fc;
+}
+
+.modal-close:focus,
+.modal-close:hover {
+  background-color: var(--pressed-state);
 }
 
 .modal-close-icon {
   fill: var(--dark-grey);
+
+  /* transition: fill var(--animation); */
 }
