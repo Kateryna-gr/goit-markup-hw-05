@@ -534,10 +534,7 @@ button {
   transition: transform var(--animation);
 }
 
-.works-list-item:hover .overlay-text {
-  transform: translateY(0%);
-}
-
+.works-list-link:hover .overlay-text,
 .works-list-link:focus .overlay-text {
   transform: translateY(0%);
 }
